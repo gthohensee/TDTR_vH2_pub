@@ -1,0 +1,63 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs28 \cf2 README for TDTR_vH2 MATLAB package, September 10th 2014\
+
+\b0 \
+
+\b Author Information:
+\b0 \
+Gregory Hohensee \
+Ph.D. Candidate, Cahill Group\
+Physics Department\
+University of Illinois Urbana-Champaign\
+Contact email: hohense2 [at] illinois [dot] edu\
+\
+
+\b Introduction:
+\b0 \
+This is the MATLAB structure I've been working on recently, for processing and analyzing many TDTR datasets efficiently. It's a more integrated and user friendly version of what I've been using these past few years.\
+\
+The one-channel package allows for anisotropic bidirectional heat flow with pump spot size that can be allowed to vary with time delay. If there is high divergence or non-Gaussian components in the beam that follows the delay stage optical path, the focused spot size of that beam can vary significantly over delay time. You can manually fit any number of parameters to all the signal components, request sensitivity plots at any time, or automatically fit the ratio signal.\
+\
+
+\b How to use:
+\b0 \
+You'll want to start by looking at the org chart and studying the process and analyze template scripts in the TDTR_vH2 folder. The TDTR_vH2 and TDTR_TTM_vH2 folders share certain m-files in common, but they run independently. TTM refers to \'93Two-Temperature Model\'94; it was built to analyze magnon-phonon coupling in spin ladders.\
+\
+Just set the current directory in MATLAB to be inside one of these folders to run the process and analyze scripts. I've included example raw data folders and process/analyze scripts to support the templates.\
+\
+
+\b Important:
+\b0  my style is to run MATLAB scripts in segments, not to run the entire script at once, and the user-facing scripts are written for that kind of operation.\
+\
+I\'92ve tested this package for functionality and aesthetics on Mac OS X, so aside from changing directories, it should be operational as-is. The \'93140814\'94 data process and analyze scripts should run immediately. I\'92ve noticed that the formatting of the output figures is a little off on Windows PCs; you will have to edit some lines at the end of MAIN to fix this. That said, I wouldn\'92t be surprised if there are errors when you first run it; feel free to contact me for debugging if necessary.\
+\
+
+\b Other comments:
+\b0 \
+One new feature in vH2 is that the Two-Temperature Model half of the code now supports fitting of thermal parameters to two data sets simultaneously, where the data are the same sample measured at two different modulation frequencies. This is thanks to Jun Liu\'92s work.\
+\
+The automatic fitting protocol (TDTR_FIT scripts) is much less sophisticated than the manual fitting system (TDTR_MANUALFIT), because I favor manual fitting in my own work. Manual fitting offers more options, is more reliable, and provides better intuition to the TDTR data sensitivities.\
+\
+The writeLCTE scripts are databases of thermal parameters, in some cases with pressure and temperature dependence built in. I make no guarantees as to the accuracy of the values or extrapolations listed there. Use at own risk.\
+\
+
+\b Limitations:
+\b0 \
+Some fitting options available to manual fitting are not available in automatic fitting.\
+\
+The automatic fitting procedure is not effective for heat capacity or thickness, because fminsearch fits precision by the decimal place, not significant figure. So the 3e6 heat capacity requires 8 significant figures before fminsearch is satisfied.\
+\
+The TEMP_TTM script has a hardcoded adiabatic boundary condition for the second heat channel, since I had used it for spin ladders. \
+\
+============================\
+\
+Thanks for reading,\
+-Greg Hohensee
+\fs20 \
+}
